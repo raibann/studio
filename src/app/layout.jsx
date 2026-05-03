@@ -6,6 +6,9 @@ export const metadata = {
     template: "Abdullah",
     default: "Abdullah",
   },
+  icons: {
+    icon: "/s-midvortex-labs-logo.jpg",
+  },
 };
 
 export default function Layout({ children }) {

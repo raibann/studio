@@ -27,7 +27,7 @@ const Header = ({
       <div className="flex items-center justify-between">
         {/* Logo */}
         <Link href={"/"} aria-label="Home">
-          <Logo invert={invert}>Abdullah Agency</Logo>
+          <Logo invert={invert}>Midvortex Labs</Logo>
         </Link>
         <div className="flex items-center gap-x-8">
           <Button href={"/contact"} invert={invert}>
@@ -121,7 +121,7 @@ const RootLayoutInner = ({ children }) => {
         <div
           className="absolute left-0 right-0 top-2 z-40 pt-14"
           aria-hidden={expanded ? "true" : undefined}
-          inert={expanded ? "" : undefined}
+          inert={expanded ? true : undefined}
         >
           {/* Header */}
           <Header
@@ -143,7 +143,7 @@ const RootLayoutInner = ({ children }) => {
           style={{ height: expanded ? "auto" : "0.5rem" }}
           className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
           aria-hidden={expanded ? undefined : "true"}
-          inert={expanded ? undefined : ""}
+          inert={expanded ? undefined : true}
         >
           <motion.div layout className="bg-neutral-800">
             <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">

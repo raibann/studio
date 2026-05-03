@@ -22,7 +22,7 @@ const Services = () => {
       <Container className="mt-16">
         <div className="lg:flex lg:items-center lg:justify-end">
           <div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
-            <FadeIn className="w-[33.75rem] flex-none lg:w-[45rem]">
+            <FadeIn className="w-135 flex-none lg:w-180">
               <StylizedImage
                 src={imageLaptop}
                 sizes="(min-width: 1024px) 41rem, 31rem"
@@ -31,7 +31,7 @@ const Services = () => {
             </FadeIn>
           </div>
           {/* List item */}
-          <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
+          <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pl-4">
             <ListItem title="Web development">
               We specialise in crafting beautiful, high quality marketing pages.
               The rest of the website will be a shell that uses lorem ipsum

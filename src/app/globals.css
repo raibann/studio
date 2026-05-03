@@ -1,3 +1,16 @@
-@import "./base.css";
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --radius-4xl: 2.5rem;
+  --font-sans: "Mona Sans", system-ui, sans-serif;
+  --font-display: "Mona Sans", system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: "Mona Sans";
+  font-weight: 200 900;
+  font-display: block;
+  font-style: normal;
+  font-stretch: 75% 125%;
+  src: url("../fonts//Mona-Sans.var.woff2");
+}

@@ -6,7 +6,7 @@ function BlockquoteWithImage({ author, image, children, className }) {
   return (
     <figure
       className={clsx(
-        "grid grid-cols-[auto,1fr] items-center gap-x-4 gap-y-8 sm:grid-cols-12 sm:grid-rows-[1fr,auto,auto,1fr] sm:gap-x-10 lg:gap-x-16",
+        "grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-8 sm:grid-cols-12 sm:grid-rows-[1fr_auto_auto_1fr] sm:gap-x-10 lg:gap-x-16",
         className
       )}
     >
@@ -18,7 +18,7 @@ function BlockquoteWithImage({ author, image, children, className }) {
           alt=""
           {...image}
           sizes="(min-width: 1024px) 17.625rem, (min-width: 768px) 16rem, (min-width: 640px) 40vw, 3rem"
-          className="h-12 w-12 object-cover grayscale sm:aspect-[7/9] sm:h-auto sm:w-full"
+          className="h-12 w-12 object-cover grayscale sm:aspect-7/9 sm:h-auto sm:w-full"
         />
       </div>
       <figcaption className="text-sm text-neutral-950 sm:col-span-7 sm:row-start-3 sm:text-base">
@@ -35,7 +35,7 @@ function BlockquoteWithoutImage({ author, children, className }) {
   return (
     <Border position="left" className={clsx("pl-8", className)}>
       <figure className="text-sm">
-        <blockquote className="text-neutral-600 [&>*]:relative [&>:first-child]:before:absolute [&>:first-child]:before:right-full [&>:first-child]:before:content-['“'] [&>:last-child]:after:content-['”']">
+        <blockquote className="text-neutral-600 *:relative *:first:before:absolute *:first:before:right-full *:first:before:content-['“'] *:last:after:content-['”']">
           {typeof children === "string" ? <p>{children}</p> : children}
         </blockquote>
         <figcaption className="mt-6 font-semibold text-neutral-950">

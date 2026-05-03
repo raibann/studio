@@ -1,7 +1,7 @@
 export function constructMetadata({
-  title = "Abdullah Agency ",
-  description = "Abdullah Agency is an open-source website.",
-  image = "/agency.PNG",
+  title = "Midvortex Labs",
+  description = "Midvortex Labs is an open-source website.",
+  image = "/s-midvortex-labs-logo.jpg",
   icons = "/favicon.ico",
   noIndex = false,
 }) {
