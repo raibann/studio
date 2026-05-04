@@ -74,7 +74,6 @@ const Footer = () => {
             <Image
               src="/midvortex-2.png"
               alt="Midvortex"
-              unoptimized
               width={48}
               height={48}
             />

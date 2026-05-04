@@ -33,7 +33,6 @@ const Team = ({ teams }) => {
                 <Image
                   src={team.image}
                   alt={team.name}
-                  unoptimized
                   fill
                   className="object-cover"
                 />

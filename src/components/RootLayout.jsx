@@ -38,7 +38,6 @@ const Header = ({
           <Image
             src={expanded ? "/midvortex-1.png" : "/midvortex-2.png"}
             alt="Midvortex"
-            unoptimized
             width={40}
             height={40}
             className="transition-transform group-hover:scale-105"

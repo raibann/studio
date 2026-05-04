@@ -33,7 +33,6 @@ const Clients = () => {
                   <Image
                     src={logo}
                     alt={client}
-                    unoptimized
                     width={100}
                     height={100}
                     className="mx-auto"
