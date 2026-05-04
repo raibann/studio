@@ -11,7 +11,10 @@ import Button from "./Button";
 import clsx from "clsx";
 import Offices from "./Offices";
 import SocialMedia from "./SocialMedia";
-import Footer from "./Footer";
+import Image from "next/image";
+import { BsMailbox2 } from "react-icons/bs";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = ({
   panelId,
@@ -20,18 +23,30 @@ const Header = ({
   expanded,
   onToggle,
   toggleRef,
+  changeLocaleAction,
 }) => {
-  // Container
+  const t = useTranslations('navigation');
+  const logoSrc = expanded ? "/midvortex-1.png" : "/midvortex-2.png";
   return (
     <Container>
       <div className="flex items-center justify-between">
-        {/* Logo */}
-        <Link href={"/"} aria-label="Home">
-          <Logo invert={invert}>Midvortex Labs</Logo>
+        <Link href="/" aria-label="Home" className="flex gap-1 items-center">
+          <Image
+            src={logoSrc}
+            alt="Midvortex"
+            unoptimized
+            width={48}
+            height={48}
+          />
+          <Logo invert={invert}>Midvortex</Logo>
         </Link>
-        <div className="flex items-center gap-x-8">
-          <Button href={"/contact"} invert={invert}>
-            Contact us
+        <div className="flex items-center gap-x-4">
+          <LanguageSwitcher changeLocaleAction={changeLocaleAction} invert={invert} />
+          <Button href="/contact" invert={invert}>
+            <span className="hidden md:block">{t('contactUs')}</span>
+            <span className="md:hidden">
+              <BsMailbox2 />
+            </span>
           </Button>
           <button
             ref={toggleRef}
@@ -41,7 +56,7 @@ const Header = ({
             aria-controls={panelId}
             className={clsx(
               "group -m-2.5 rounded-full p-2.5 transition",
-              invert ? "hover:bg-white/10" : "hover:bg-neutral-950/10"
+              invert ? "hover:bg-white/10" : "hover:bg-neutral-950/10",
             )}
             aria-label="Toggle navigation"
           >
@@ -50,7 +65,7 @@ const Header = ({
                 "h-6 w-6",
                 invert
                   ? "fill-white group-hover:fill-neutral-200"
-                  : "fill-neutral-950 group-hover:fill-neutral-700"
+                  : "fill-neutral-950 group-hover:fill-neutral-700",
               )}
             />
           </button>
@@ -82,21 +97,23 @@ const NavigationItem = ({ href, children }) => {
 };
 
 const Navigation = () => {
+  const t = useTranslations('navigation');
   return (
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
-        <NavigationItem href="/work">Our Work</NavigationItem>
-        <NavigationItem href="/about">About Us</NavigationItem>
+        <NavigationItem href="/work">{t('ourWork')}</NavigationItem>
+        <NavigationItem href="/about">{t('aboutUs')}</NavigationItem>
       </NavigationRow>
       <NavigationRow>
-        <NavigationItem href="/process">Our Process</NavigationItem>
-        <NavigationItem href="/blog">Blog</NavigationItem>
+        <NavigationItem href="/process">{t('ourProcess')}</NavigationItem>
+        <NavigationItem href="/blog">{t('blog')}</NavigationItem>
       </NavigationRow>
     </nav>
   );
 };
 
-const RootLayoutInner = ({ children }) => {
+const RootLayoutInner = ({ children, changeLocaleAction }) => {
+  const t = useTranslations('layout');
   const panelId = useId();
   const [expanded, setExpanded] = useState(false);
   const openRef = useRef();
@@ -123,7 +140,6 @@ const RootLayoutInner = ({ children }) => {
           aria-hidden={expanded ? "true" : undefined}
           inert={expanded ? true : undefined}
         >
-          {/* Header */}
           <Header
             panelId={panelId}
             icon={HiMenuAlt4}
@@ -132,9 +148,10 @@ const RootLayoutInner = ({ children }) => {
             onToggle={() => {
               setExpanded((expanded) => !expanded);
               window.setTimeout(() =>
-                closeRef.current?.focus({ preventScroll: true })
+                closeRef.current?.focus({ preventScroll: true }),
               );
             }}
+            changeLocaleAction={changeLocaleAction}
           />
         </div>
         <motion.div
@@ -156,19 +173,19 @@ const RootLayoutInner = ({ children }) => {
                 onToggle={() => {
                   setExpanded((expanded) => !expanded);
                   window.setTimeout(() =>
-                    openRef.current?.focus({ preventScroll: true })
+                    openRef.current?.focus({ preventScroll: true }),
                   );
                 }}
+                changeLocaleAction={changeLocaleAction}
               />
             </div>
-            {/* Navigation */}
             <Navigation />
             <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
                   <div>
                     <h2 className="font-display text-base font-semibold text-white">
-                      Our offices
+                      {t('ourOffices')}
                     </h2>
                     <Offices
                       invert
@@ -197,17 +214,15 @@ const RootLayoutInner = ({ children }) => {
           className="relative isolate flex w-full flex-col pt-9"
         >
           <main className="w-full flex-auto">{children}</main>
-          {/* Footer */}
-          <Footer />
         </motion.div>
       </motion.div>
     </MotionConfig>
   );
 };
 
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children, changeLocaleAction }) => {
   const pathName = usePathname();
-  return <RootLayoutInner key={pathName}>{children}</RootLayoutInner>;
+  return <RootLayoutInner key={pathName} changeLocaleAction={changeLocaleAction}>{children}</RootLayoutInner>;
 };
 
 export default RootLayout;

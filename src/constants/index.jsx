@@ -1,20 +1,21 @@
 import { SocialMediaProfiles } from "@/components/SocialMedia";
+import { BsGithub, BsTelegram } from "react-icons/bs";
+import { getAllWork } from "@/lib/work";
+
+function generateWorkLinks() {
+  const projects = getAllWork();
+  return projects.map((project) => ({
+    title: project.title,
+    href: `/work/${project.slug}`,
+  }));
+}
 
 export const navigation = [
   {
     title: "Work",
     links: [
-      { title: "AH MANA3RAF", href: "/work/amazonclone" },
-      { title: "AH MANA3RAF", href: "/work/bazar" },
-      { title: "AH MANA3RAF", href: "/work/blog101" },
-      {
-        title: (
-          <>
-            See all <span aria-hidden="true">&rarr;</span>
-          </>
-        ),
-        href: "/work",
-      },
+      ...generateWorkLinks(),
+      { title: "See all", href: "/work" },
     ],
   },
   {
@@ -29,5 +30,76 @@ export const navigation = [
   {
     title: "Connect",
     links: SocialMediaProfiles,
+  },
+];
+
+export const teams = [
+  {
+    name: "Raibann",
+    role: "CEO & CO-Founder",
+    image: "/images/teams/raibann.png",
+    social: [
+      {
+        title: "GitHub",
+        href: "https://github.com/midvortex-labs-kh",
+        icon: BsGithub,
+      },
+      {
+        title: "Telegram",
+        href: "https://t.me/maraibann",
+        icon: BsTelegram,
+      },
+    ],
+  },
+  {
+    name: "Minea",
+    role: "CTO & Manager",
+    image: "/images/teams/minea.png",
+    social: [
+      {
+        title: "GitHub",
+        href: "https://github.com/midvortex-labs-kh",
+        icon: BsGithub,
+      },
+      {
+        title: "Telegram",
+        href: "https://t.me/meassaominea",
+        icon: BsTelegram,
+      },
+    ],
+  },
+  {
+    name: "Rotha",
+    role: "Senior Web Developer",
+    image: "/images/teams/rotha.png",
+    social: [
+      {
+        title: "GitHub",
+        href: "https://github.com/midvortex-labs-kh",
+        icon: BsGithub,
+      },
+      {
+        title: "Telegram",
+        href: "https://t.me/BrandoWeaverD9K2",
+        icon: BsTelegram,
+      },
+    ],
+  },
+  {
+    name: "Chhay",
+    role: "Senior App Developer",
+    image: "/images/teams/chhay.png",
+    social: [
+      {
+        title: "GitHub",
+        href: "https://github.com/midvortex-labs-kh",
+        icon: BsGithub,
+      },
+      {
+        title: "Telegram",
+        href: "https://t.me/Loeurng_Chhay",
+        icon: BsTelegram,
+      },
+    ],
   },
 ];

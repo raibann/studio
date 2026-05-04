@@ -1,12 +1,14 @@
 import PageIntro from "@/components/PageIntro";
+import { getTranslations } from 'next-intl/server';
 
-const BlogPage = () => {
+const BlogPage = async () => {
+  const t = await getTranslations('blog');
+
   return (
     <>
-      <PageIntro eyebrow="Blog" title="The latest articles and news">
+      <PageIntro eyebrow={t('eyebrow')} title={t('title')}>
         <p>
-          Stay up-to-date with the latest industry news as our marketing teams
-          finds new ways to re-purpose old CSS tricks articles.
+          {t('description')}
         </p>
       </PageIntro>
     </>

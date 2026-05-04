@@ -1,7 +1,7 @@
 export function constructMetadata({
-  title = "Midvortex Labs",
-  description = "Midvortex Labs is an open-source website.",
-  image = "/s-midvortex-labs-logo.jpg",
+  title = "Midvortex",
+  description = "Midvortex is an open-source website.",
+  image = "/midvortex-3.png",
   icons = "/favicon.ico",
   noIndex = false,
 }) {
@@ -17,15 +17,15 @@ export function constructMetadata({
         },
       ],
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-      creator: "@KING_IN_JUNGLE",
-    },
+    // twitter: {
+    //   card: "summary_large_image",
+    //   title,
+    //   description,
+    //   images: [image],
+    //   creator: "@KING_IN_JUNGLE",
+    // },
     icons,
-    metadataBase: new URL("https://agency-website-abdullah.vercel.app/"),
+    // metadataBase: new URL("https://agency-website-abdullah.vercel.app/"),
     themeColor: "#FFF",
     ...(noIndex && {
       robots: {

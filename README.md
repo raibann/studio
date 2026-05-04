@@ -1,8 +1,8 @@
-# Midvortex Labs - Next.js, Tailwind CSS & Framer Motion
+# Midvortex - Next.js, Tailwind CSS & Framer Motion
 
-![Midvortex Labs](/public/s-midvortex-labs-logo.jpg)
+![Midvortex](/public/midvortex-3.png)
 
-Midvortex Labs is a stunning multi-page agency website template developed using Next.js, Tailwind CSS, and Framer Motion. Designed and built by the talented Tailwind CSS team, this template offers a sleek and minimalist appearance while boasting engaging interactive elements and captivating animations powered by Framer Motion.
+Midvortex is a stunning multi-page agency website template developed using Next.js, Tailwind CSS, and Framer Motion. Designed and built by the talented Tailwind CSS team, this template offers a sleek and minimalist appearance while boasting engaging interactive elements and captivating animations powered by Framer Motion.
 
 ## Features
 
@@ -15,7 +15,7 @@ Midvortex Labs is a stunning multi-page agency website template developed using 
 
 ## Getting Started
 
-To run the Midvortex Labs website locally, follow these steps:
+To run the Midvortex website locally, follow these steps:
 
 1. **Clone the repository:**
 

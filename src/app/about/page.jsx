@@ -3,38 +3,37 @@ import Container from "@/components/Container";
 import Cultures from "@/components/Cultures";
 import PageIntro from "@/components/PageIntro";
 import { StatList, StatListItem } from "@/components/StatList";
+import { teams } from "@/constants";
 import React from "react";
+import Team from "@/components/Team";
+import { getTranslations } from 'next-intl/server';
 
-const AboutPage = () => {
+const AboutPage = async () => {
+  const t = await getTranslations('about');
+
   return (
     <>
-      <PageIntro eyebrow="About us" title="Our strength is collaboration">
+      <PageIntro eyebrow={t('eyebrow')} title={t('title')}>
         <p>
-          We believe that our strength lies in our collaborative approach, which
-          puts our clients at the center of everything we do.
+          {t('description1')}
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base">
           <p>
-            Studio was started by three friends who noticed that developer
-            studios were charging clients double what an in-house team would
-            cost. Since the beginning, we have been committed to doing things
-            differently by charging triple instead.
+            {t('description2')}
           </p>
           <p>
-            At Studio, we’re more than just colleagues — we’re a family. This
-            means we pay very little and expect people to work late. We want our
-            employees to bring their whole selves to work. In return, we just
-            ask that they keep themselves there until at least 6:30pm.
+            {t('description3')}
           </p>
         </div>
       </PageIntro>
       <Container className="mt-16">
         <StatList>
-          <StatListItem value="35" label="Underpaid employees" />
-          <StatListItem value="52" label="Placated clients" />
-          <StatListItem value="$25M" label="Invoices billed" />
+          <StatListItem value="2" label={t('stats.underpaidEmployees')} />
+          <StatListItem value="2" label={t('stats.placatedClients')} />
+          <StatListItem value="$2k" label={t('stats.invoicesBilled')} />
         </StatList>
       </Container>
+      <Team teams={teams} />
       <Cultures />
       <ContactSection />
     </>

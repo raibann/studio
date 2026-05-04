@@ -12,11 +12,9 @@ function Block({ x, y, ...props }) {
   );
 }
 
-const GridPattern = ({ yOffset = 0, interactive = false, ...props }) => {
+const GridPattern = ({ yOffset = 0, ...props }) => {
   let id = useId();
   let ref = useRef();
-  let currentBlock = useRef();
-  let counter = useRef(0);
   let [hoveredBlocks, setHoveredBlocks] = useState([]);
   let staticBlocks = [
     [1, 1],

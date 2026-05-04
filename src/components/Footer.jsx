@@ -4,6 +4,8 @@ import FadeIn from "./FadeIn";
 import FooterNavigation from "./FooterNavigation";
 import Logo from "./Logo";
 import Link from "next/link";
+import Image from "next/image";
+import { getTranslations } from 'next-intl/server';
 
 const ArrowIcon = (props) => {
   return (
@@ -18,22 +20,23 @@ const ArrowIcon = (props) => {
   );
 };
 
-const NewsletterForm = () => {
+const NewsletterForm = async () => {
+  const t = await getTranslations('footer.newsletter');
+
   return (
     <form className="max-w-sm">
       <h2 className="font-display text-sm font-semibold tracking-wider text-neutral-950">
-        Sign up for our newsletter
+        {t('title')}
       </h2>
       <p className="mt-4 text-sm text-neutral-700">
-        Subscribe to get the latest design news, articles, resources and
-        inspiration.
+        {t('description')}
       </p>
       <div className="relative mt-6">
         <input
           type="email"
-          placeholder="Email address"
+          placeholder={t('placeholder')}
           autoComplete="email"
-          aria-label="Email address"
+          aria-label={t('placeholder')}
           className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
         />
         <div className="absolute inset-y-1 right-1 flex justify-end">
@@ -50,7 +53,9 @@ const NewsletterForm = () => {
   );
 };
 
-const Footer = () => {
+const Footer = async () => {
+  const t = await getTranslations('footer');
+
   return (
     <Container as="footer" className="mt-24 w-full sm:mt-32 lg:mt-40">
       <FadeIn>
@@ -61,13 +66,22 @@ const Footer = () => {
           </div>
         </div>
         <div className="mb-20 mt-24 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
-          <Link href={"/"} aria-label="Home">
-            <Logo className="h-8" fillOnHover>
-              Midvortex Labs
-            </Logo>
+          <Link
+            href={"/"}
+            aria-label="Home"
+            className="flex gap-1 items-center"
+          >
+            <Image
+              src="/midvortex-2.png"
+              alt="Midvortex"
+              unoptimized
+              width={48}
+              height={48}
+            />
+            <Logo invert={false}>Midvortex</Logo>
           </Link>
           <p className="text-sm text-neutral-700">
-            © Midvortex Labs Inc. {new Date().getFullYear()}
+            {t('copyright', { year: new Date().getFullYear() })}
           </p>
         </div>
       </FadeIn>

@@ -1,11 +1,38 @@
-import { navigation } from "@/constants";
 import Link from "next/link";
+import { getTranslations } from 'next-intl/server';
+import { SocialMediaProfiles } from "@/components/SocialMedia";
 
-const FooterNavigation = () => {
+const FooterNavigation = async () => {
+  const t = await getTranslations('navigation');
+
+  const navLinks = [
+    {
+      title: t('work'),
+      links: [
+        { title: "MKS Catering", href: "/work/mks-catering" },
+        { title: "TL Dashboard", href: "/work/tl-dashboard" },
+        { title: t('seeAll'), href: "/work" },
+      ],
+    },
+    {
+      title: t('company'),
+      links: [
+        { title: t('about'), href: "/about" },
+        { title: t('process'), href: "/process" },
+        { title: t('blog'), href: "/blog" },
+        { title: t('contactUs'), href: "/contact" },
+      ],
+    },
+    {
+      title: t('connect'),
+      links: SocialMediaProfiles,
+    },
+  ];
+
   return (
     <nav>
       <ul role="list" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-        {navigation.map((item) => (
+        {navLinks.map((item) => (
           <li key={item.title}>
             <div className="font-display text-sm font-semibold tracking-wider text-neutral-950">
               {item.title}
