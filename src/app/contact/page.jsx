@@ -1,11 +1,13 @@
+"use client";
+
 import ContactDetails from "@/components/ContactDetails";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 import PageIntro from "@/components/PageIntro";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-const ContactPage = async () => {
-  const t = await getTranslations('contact');
+const ContactPage = () => {
+  const t = useTranslations('contact');
 
   return (
     <>

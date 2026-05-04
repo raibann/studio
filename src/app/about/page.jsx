@@ -1,3 +1,5 @@
+"use client";
+
 import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
 import Cultures from "@/components/Cultures";
@@ -6,10 +8,10 @@ import { StatList, StatListItem } from "@/components/StatList";
 import { teams } from "@/constants";
 import React from "react";
 import Team from "@/components/Team";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-const AboutPage = async () => {
-  const t = await getTranslations('about');
+const AboutPage = () => {
+  const t = useTranslations('about');
 
   return (
     <>

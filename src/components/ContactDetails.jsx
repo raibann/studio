@@ -1,31 +1,33 @@
+"use client";
+
 import React from "react";
 import FadeIn from "./FadeIn";
 import Offices from "./Offices";
 import Border from "./Border";
 import Link from "next/link";
 import SocialMedia from "./SocialMedia";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from "next-intl";
 
-const ContactDetails = async () => {
-  const t = await getTranslations('contact');
+const ContactDetails = () => {
+  const t = useTranslations("contact");
 
   return (
     <FadeIn>
-      <h2 className="font-display text-base font-semibold text-neutral-950">
-        {t('ourOffices')}
+      <h2 className="text-base font-semibold text-neutral-950">
+        {t("ourOffices")}
       </h2>
       <p className="mt-6 text-base text-neutral-600">
-        {t('officeDescription')}
+        {t("officeDescription")}
       </p>
       <Offices className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2" />
       <Border className="mt-16 pt-16">
-        <h2 className="font-display text-base font-semibold text-neutral-950">
-          {t('emailUs')}
+        <h2 className="text-base font-semibold text-neutral-950">
+          {t("emailUs")}
         </h2>
         <dl className="mt-6 grid grid-cols-1 gap-8 text-sm sm:grid-cols-2">
           {[
-            [t('careers'), "raibann.rb@gmail.com"],
-            [t('press'), "undefined.2dev@gmail.com"],
+            [t("careers"), "raibann.rb@gmail.com"],
+            [t("press"), "undefined.2dev@gmail.com"],
           ].map(([label, email]) => (
             <div key={email}>
               <dt className="font-semibold text-neutral-950">{label}</dt>
@@ -42,8 +44,8 @@ const ContactDetails = async () => {
         </dl>
       </Border>
       <Border className="mt-16 pt-16">
-        <h2 className="font-display text-base font-semibold text-neutral-950">
-          {t('followUs')}
+        <h2 className="text-base font-semibold text-neutral-950">
+          {t("followUs")}
         </h2>
         <SocialMedia className="mt-6" />
       </Border>

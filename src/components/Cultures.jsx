@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 import SectionIntro from "./SectionIntro";
 import Container from "./Container";
 import { GridList, GridListItem } from "./GridList";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-const Cultures = async () => {
-  const t = await getTranslations('cultures');
+const Cultures = () => {
+  const t = useTranslations('cultures');
 
   return (
     <div className="mt-24 bg-neutral-950 py-24 sm:mt-32 lg:mt-40 lg:py-32">

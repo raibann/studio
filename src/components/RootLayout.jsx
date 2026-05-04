@@ -15,6 +15,7 @@ import Image from "next/image";
 import { BsMailbox2 } from "react-icons/bs";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
+import Footer from "./Footer";
 
 const Header = ({
   panelId,
@@ -25,7 +26,7 @@ const Header = ({
   toggleRef,
   changeLocaleAction,
 }) => {
-  const t = useTranslations('navigation');
+  const t = useTranslations("navigation");
   const logoSrc = expanded ? "/midvortex-1.png" : "/midvortex-2.png";
   return (
     <Container>
@@ -41,9 +42,12 @@ const Header = ({
           <Logo invert={invert}>Midvortex</Logo>
         </Link>
         <div className="flex items-center gap-x-4">
-          <LanguageSwitcher changeLocaleAction={changeLocaleAction} invert={invert} />
+          <LanguageSwitcher
+            changeLocaleAction={changeLocaleAction}
+            invert={invert}
+          />
           <Button href="/contact" invert={invert}>
-            <span className="hidden md:block">{t('contactUs')}</span>
+            <span className="hidden md:block">{t("contactUs")}</span>
             <span className="md:hidden">
               <BsMailbox2 />
             </span>
@@ -97,23 +101,23 @@ const NavigationItem = ({ href, children }) => {
 };
 
 const Navigation = () => {
-  const t = useTranslations('navigation');
+  const t = useTranslations("navigation");
   return (
-    <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
+    <nav className="mt-px text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
-        <NavigationItem href="/work">{t('ourWork')}</NavigationItem>
-        <NavigationItem href="/about">{t('aboutUs')}</NavigationItem>
+        <NavigationItem href="/work">{t("ourWork")}</NavigationItem>
+        <NavigationItem href="/about">{t("aboutUs")}</NavigationItem>
       </NavigationRow>
       <NavigationRow>
-        <NavigationItem href="/process">{t('ourProcess')}</NavigationItem>
-        <NavigationItem href="/blog">{t('blog')}</NavigationItem>
+        <NavigationItem href="/process">{t("ourProcess")}</NavigationItem>
+        <NavigationItem href="/blog">{t("blog")}</NavigationItem>
       </NavigationRow>
     </nav>
   );
 };
 
 const RootLayoutInner = ({ children, changeLocaleAction }) => {
-  const t = useTranslations('layout');
+  const t = useTranslations("layout");
   const panelId = useId();
   const [expanded, setExpanded] = useState(false);
   const openRef = useRef();
@@ -184,8 +188,8 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
                   <div>
-                    <h2 className="font-display text-base font-semibold text-white">
-                      {t('ourOffices')}
+                    <h2 className="text-base font-semibold text-white">
+                      {t("ourOffices")}
                     </h2>
                     <Offices
                       invert
@@ -193,7 +197,7 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
                     />
                   </div>
                   <div className="sm:border-l sm:border-transparent sm:pl-16">
-                    <h2 className="font-display text-base font-semibold text-white">
+                    <h2 className="text-base font-semibold text-white">
                       Follow us
                     </h2>
                     <SocialMedia className="mt-6" invert />
@@ -214,6 +218,8 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
           className="relative isolate flex w-full flex-col pt-9"
         >
           <main className="w-full flex-auto">{children}</main>
+          {/* Footer */}
+          <Footer />
         </motion.div>
       </motion.div>
     </MotionConfig>
@@ -222,7 +228,11 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
 
 const RootLayout = ({ children, changeLocaleAction }) => {
   const pathName = usePathname();
-  return <RootLayoutInner key={pathName} changeLocaleAction={changeLocaleAction}>{children}</RootLayoutInner>;
+  return (
+    <RootLayoutInner key={pathName} changeLocaleAction={changeLocaleAction}>
+      {children}
+    </RootLayoutInner>
+  );
 };
 
 export default RootLayout;

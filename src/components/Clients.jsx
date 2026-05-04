@@ -1,22 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import Container from "./Container";
 import FadeIn, { FadeInStagger } from "./FadeIn";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from "next-intl";
 
 const clients = [
   ["Mungkol Serey Catering", "/images/clients/mungkol-serey-catering.png"],
   ["Tenglay Group", "/images/clients/tenglay-group.png"],
 ];
 
-const Clients = async () => {
-  const t = await getTranslations('clients');
+const Clients = () => {
+  const t = useTranslations("clients");
 
   return (
     <div className="mt-24 bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
       <Container>
         <FadeIn className="flex items-center gap-x-8">
-          <h2 className="font-display text-sm font-semibold tracking-wider text-white text-left">
-            {t('title')}
+          <h2 className="text-sm font-semibold tracking-wider text-white text-left">
+            {t("title")}
           </h2>
           <div className="h-px flex-auto bg-neutral-800" />
         </FadeIn>

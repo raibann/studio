@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import SectionIntro from "./SectionIntro";
 import Container from "./Container";
@@ -5,10 +7,10 @@ import FadeIn from "./FadeIn";
 import StylizedImage from "./StylizedImage";
 import imageLaptop from "../images/laptop.jpg";
 import List, { ListItem } from "./List";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-const Services = async () => {
-  const t = await getTranslations('services');
+const Services = () => {
+  const t = useTranslations('services');
 
   return (
     <>

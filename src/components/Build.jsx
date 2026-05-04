@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 import Section from "./Section";
 import imageLaptop from "@/images/laptop.jpg";
 import Blockquote from "./Blockquote";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-const Build = async () => {
-  const t = await getTranslations('build');
+const Build = () => {
+  const t = useTranslations('build');
 
   return (
     <Section title={t('title')} image={{ src: imageLaptop, shape: 2 }}>

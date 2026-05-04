@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Container from "./Container";
 import FadeIn from "./FadeIn";
@@ -5,7 +7,7 @@ import FooterNavigation from "./FooterNavigation";
 import Logo from "./Logo";
 import Link from "next/link";
 import Image from "next/image";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from "next-intl";
 
 const ArrowIcon = (props) => {
   return (
@@ -20,23 +22,21 @@ const ArrowIcon = (props) => {
   );
 };
 
-const NewsletterForm = async () => {
-  const t = await getTranslations('footer.newsletter');
+const NewsletterForm = () => {
+  const t = useTranslations("footer.newsletter");
 
   return (
     <form className="max-w-sm">
-      <h2 className="font-display text-sm font-semibold tracking-wider text-neutral-950">
-        {t('title')}
+      <h2 className="text-sm font-semibold tracking-wider text-neutral-950">
+        {t("title")}
       </h2>
-      <p className="mt-4 text-sm text-neutral-700">
-        {t('description')}
-      </p>
+      <p className="mt-4 text-sm text-neutral-700">{t("description")}</p>
       <div className="relative mt-6">
         <input
           type="email"
-          placeholder={t('placeholder')}
+          placeholder={t("placeholder")}
           autoComplete="email"
-          aria-label={t('placeholder')}
+          aria-label={t("placeholder")}
           className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
         />
         <div className="absolute inset-y-1 right-1 flex justify-end">
@@ -53,8 +53,8 @@ const NewsletterForm = async () => {
   );
 };
 
-const Footer = async () => {
-  const t = await getTranslations('footer');
+const Footer = () => {
+  const t = useTranslations("footer");
 
   return (
     <Container as="footer" className="mt-24 w-full sm:mt-32 lg:mt-40">
@@ -81,7 +81,7 @@ const Footer = async () => {
             <Logo invert={false}>Midvortex</Logo>
           </Link>
           <p className="text-sm text-neutral-700">
-            {t('copyright', { year: new Date().getFullYear() })}
+            {t("copyright", { year: new Date().getFullYear() })}
           </p>
         </div>
       </FadeIn>

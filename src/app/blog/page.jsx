@@ -1,8 +1,10 @@
-import PageIntro from "@/components/PageIntro";
-import { getTranslations } from 'next-intl/server';
+"use client";
 
-const BlogPage = async () => {
-  const t = await getTranslations('blog');
+import PageIntro from "@/components/PageIntro";
+import { useTranslations } from 'next-intl';
+
+const BlogPage = () => {
+  const t = useTranslations('blog');
 
   return (
     <>

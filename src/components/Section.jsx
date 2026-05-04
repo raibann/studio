@@ -19,10 +19,10 @@ const Section = ({ title, image, children }) => {
         <div className="mt-12 lg:mt-0 lg:w-148 lg:flex-none lg:group-even/section:order-first">
           <FadeIn>
             <div
-              className="font-display text-base font-semibold before:text-neutral-300 before:content-['/_'] after:text-neutral-950 after:content-[counter(section,decimal-leading-zero)]"
+              className="text-base font-semibold before:text-neutral-300 before:content-['/_'] after:text-neutral-950 after:content-[counter(section,decimal-leading-zero)]"
               aria-hidden="true"
             />
-            <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl">
               {title}
             </h2>
             <div className="mt-6">{children}</div>

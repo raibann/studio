@@ -14,13 +14,13 @@ const Team = ({
     <Container className={clsx("mt-24 sm:mt-32 lg:mt-40")}>
       <FadeIn>
         <h1>
-          <span className="block font-display text-base font-semibold text-neutral-950">
+          <span className="block text-base font-semibold text-neutral-950">
             {title}
           </span>
           <span className="sr-only"> - </span>
           <span
             className={clsx(
-              "mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight text-neutral-950 text-balance sm:text-6xl",
+              "mt-6 block max-w-5xl text-5xl font-medium tracking-tight text-neutral-950 text-balance sm:text-6xl",
             )}
           >
             {subtitle}

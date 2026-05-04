@@ -1,12 +1,14 @@
+"use client";
+
 import React from "react";
 import GridPattern from "./GridPattern";
 import SectionIntro from "./SectionIntro";
 import Container from "./Container";
 import { GridList, GridListItem } from "./GridList";
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-const Values = async () => {
-  const t = await getTranslations('values');
+const Values = () => {
+  const t = useTranslations('values');
 
   return (
     <div className="relative mt-24 pt-24 sm:mt-32 sm:pt-32 lg:mt-40 lg:pt-40">
