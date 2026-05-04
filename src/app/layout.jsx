@@ -3,8 +3,9 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Kantumruy_Pro, Inter } from "next/font/google";
 import { cookies } from "next/headers";
-import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const kantumruyPro = Kantumruy_Pro({
   weight: ["100", "300", "400", "500", "600", "700"],
@@ -59,6 +60,8 @@ export default async function Layout({ children }) {
             {children}
           </RootLayout>
         </NextIntlClientProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
