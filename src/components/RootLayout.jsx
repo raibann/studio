@@ -30,9 +30,13 @@ const Header = ({
   return (
     <Container className="py-3 md:py-4">
       <div className="flex items-center justify-between gap-x-4 lg:gap-x-8">
-        <Link href="/" aria-label="Home" className="flex items-center gap-2 group">
+        <Link
+          href="/"
+          aria-label="Home"
+          className="flex items-center gap-2 group"
+        >
           <Image
-            src="/midvortex-2.png"
+            src={expanded ? "/midvortex-1.png" : "/midvortex-2.png"}
             alt="Midvortex"
             unoptimized
             width={40}
@@ -49,29 +53,6 @@ const Header = ({
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-x-6">
-          {[
-            { href: "/work", label: t("ourWork") },
-            { href: "/about", label: t("aboutUs") },
-            { href: "/process", label: t("ourProcess") },
-            { href: "/blog", label: t("blog") },
-          ].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={clsx(
-                "text-sm font-medium transition-colors",
-                invert
-                  ? "text-white/80 hover:text-white"
-                  : "text-neutral-600 hover:text-neutral-950",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
         <div className="flex items-center gap-x-3">
           <LanguageSwitcher
             changeLocaleAction={changeLocaleAction}
@@ -79,23 +60,14 @@ const Header = ({
           />
 
           {/* Desktop Contact Button */}
-          <Button href="/contact" invert={invert} className="hidden sm:inline-flex">
-            {t("contactUs")}
-          </Button>
-
-          {/* Mobile Contact Icon */}
-          <Link
+          <Button
             href="/contact"
-            className={clsx(
-              "sm:hidden p-2 rounded-full transition-colors",
-              invert ? "hover:bg-white/10" : "hover:bg-neutral-100",
-            )}
-            aria-label={t("contactUs")}
+            invert={invert}
+            className="hidden sm:inline-flex"
           >
-            <BsMailbox2
-              className={clsx("w-5 h-5", invert ? "text-white" : "text-neutral-950")}
-            />
-          </Link>
+            <span className="sr-only">{t("contactUs")}</span>
+            <BsMailbox2 className="size-4" />
+          </Button>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -188,15 +160,11 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
     <MotionConfig transition={shouldReduceMotion ? { duration: 0 } : undefined}>
       <header>
         <div
-          className={clsx(
-            "sticky left-0 right-0 top-0 z-50 transition-all duration-300",
-            expanded
-              ? "bg-neutral-950 shadow-lg"
-              : "bg-white/80 backdrop-blur-md shadow-sm",
-          )}
+          className="absolute left-0 right-0 top-2 z-40 pt-14"
           aria-hidden={expanded ? "true" : undefined}
-          inert={expanded ? true : undefined}
+          inert={expanded ? true : false}
         >
+          {/* Header */}
           <Header
             panelId={panelId}
             icon={HiMenuAlt4}
@@ -217,7 +185,7 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
           style={{ height: expanded ? "auto" : "0.5rem" }}
           className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
           aria-hidden={expanded ? undefined : "true"}
-          inert={expanded ? undefined : true}
+          inert={expanded ? false : true}
         >
           <motion.div layout className="bg-neutral-800">
             <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">
@@ -236,13 +204,14 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
                 changeLocaleAction={changeLocaleAction}
               />
             </div>
+            {/* Navigation */}
             <Navigation />
             <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
                   <div>
-                    <h2 className="text-base font-semibold text-white">
-                      {t("ourOffices")}
+                    <h2 className="font-display text-base font-semibold text-white">
+                      Our offices
                     </h2>
                     <Offices
                       invert
@@ -250,7 +219,7 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
                     />
                   </div>
                   <div className="sm:border-l sm:border-transparent sm:pl-16">
-                    <h2 className="text-base font-semibold text-white">
+                    <h2 className="font-display text-base font-semibold text-white">
                       Follow us
                     </h2>
                     <SocialMedia className="mt-6" invert />
