@@ -1,21 +1,21 @@
+"use client";
+
 import React from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
+import { useTranslations } from "next-intl";
 
-const Team = ({
-  teams,
-  title = "Our Team",
-  subtitle = "Meet the people behind the magic",
-}) => {
+const Team = ({ teams }) => {
+  const t = useTranslations("team");
   return (
     <Container className={clsx("mt-24 sm:mt-32 lg:mt-40")}>
       <FadeIn>
         <h1>
           <span className="block text-base font-semibold text-neutral-950">
-            {title}
+            {t("title")}
           </span>
           <span className="sr-only"> - </span>
           <span
@@ -23,7 +23,7 @@ const Team = ({
               "mt-6 block max-w-5xl text-5xl font-medium tracking-tight text-neutral-950 text-balance sm:text-6xl",
             )}
           >
-            {subtitle}
+            {t("subtitle")}
           </span>
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full mt-6">

@@ -1,15 +1,13 @@
-"use client";
-
 import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
 import FadeIn, { FadeInStagger } from "@/components/FadeIn";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllWork } from "@/lib/work";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-const WorkPage = () => {
-  const t = useTranslations("work");
+const WorkPage = async () => {
+  const t = await getTranslations("work");
   const projects = getAllWork();
 
   return (

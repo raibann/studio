@@ -27,31 +27,77 @@ const Header = ({
   changeLocaleAction,
 }) => {
   const t = useTranslations("navigation");
-  const logoSrc = expanded ? "/midvortex-1.png" : "/midvortex-2.png";
   return (
-    <Container>
-      <div className="flex items-center justify-between">
-        <Link href="/" aria-label="Home" className="flex gap-1 items-center">
+    <Container className="py-3 md:py-4">
+      <div className="flex items-center justify-between gap-x-4 lg:gap-x-8">
+        <Link href="/" aria-label="Home" className="flex items-center gap-2 group">
           <Image
-            src={logoSrc}
+            src="/midvortex-2.png"
             alt="Midvortex"
             unoptimized
-            width={48}
-            height={48}
+            width={40}
+            height={40}
+            className="transition-transform group-hover:scale-105"
           />
-          <Logo invert={invert}>Midvortex</Logo>
+          <span
+            className={clsx(
+              "hidden sm:block text-lg font-semibold",
+              invert ? "text-white" : "text-neutral-950",
+            )}
+          >
+            Midvortex
+          </span>
         </Link>
-        <div className="flex items-center gap-x-4">
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-x-6">
+          {[
+            { href: "/work", label: t("ourWork") },
+            { href: "/about", label: t("aboutUs") },
+            { href: "/process", label: t("ourProcess") },
+            { href: "/blog", label: t("blog") },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={clsx(
+                "text-sm font-medium transition-colors",
+                invert
+                  ? "text-white/80 hover:text-white"
+                  : "text-neutral-600 hover:text-neutral-950",
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-x-3">
           <LanguageSwitcher
             changeLocaleAction={changeLocaleAction}
             invert={invert}
           />
-          <Button href="/contact" invert={invert}>
-            <span className="hidden md:block">{t("contactUs")}</span>
-            <span className="md:hidden">
-              <BsMailbox2 />
-            </span>
+
+          {/* Desktop Contact Button */}
+          <Button href="/contact" invert={invert} className="hidden sm:inline-flex">
+            {t("contactUs")}
           </Button>
+
+          {/* Mobile Contact Icon */}
+          <Link
+            href="/contact"
+            className={clsx(
+              "sm:hidden p-2 rounded-full transition-colors",
+              invert ? "hover:bg-white/10" : "hover:bg-neutral-100",
+            )}
+            aria-label={t("contactUs")}
+          >
+            <BsMailbox2
+              className={clsx("w-5 h-5", invert ? "text-white" : "text-neutral-950")}
+            />
+          </Link>
+
+          {/* Mobile Menu Toggle */}
           <button
             ref={toggleRef}
             type="button"
@@ -59,14 +105,16 @@ const Header = ({
             aria-expanded={expanded.toString()}
             aria-controls={panelId}
             className={clsx(
-              "group -m-2.5 rounded-full p-2.5 transition",
-              invert ? "hover:bg-white/10" : "hover:bg-neutral-950/10",
+              "group relative p-2 rounded-full transition-all duration-200",
+              invert
+                ? "hover:bg-white/10 text-white"
+                : "hover:bg-neutral-100 text-neutral-950",
             )}
-            aria-label="Toggle navigation"
+            aria-label={expanded ? "Close navigation" : "Open navigation"}
           >
             <Icon
               className={clsx(
-                "h-6 w-6",
+                "h-6 w-6 transition-colors",
                 invert
                   ? "fill-white group-hover:fill-neutral-200"
                   : "fill-neutral-950 group-hover:fill-neutral-700",
@@ -140,7 +188,12 @@ const RootLayoutInner = ({ children, changeLocaleAction }) => {
     <MotionConfig transition={shouldReduceMotion ? { duration: 0 } : undefined}>
       <header>
         <div
-          className="absolute left-0 right-0 top-2 z-40 pt-14"
+          className={clsx(
+            "sticky left-0 right-0 top-0 z-50 transition-all duration-300",
+            expanded
+              ? "bg-neutral-950 shadow-lg"
+              : "bg-white/80 backdrop-blur-md shadow-sm",
+          )}
           aria-hidden={expanded ? "true" : undefined}
           inert={expanded ? true : undefined}
         >
