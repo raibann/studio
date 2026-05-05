@@ -4,11 +4,12 @@ import FadeIn, { FadeInStagger } from "@/components/FadeIn";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllWork } from "@/lib/work";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 
 const WorkPage = async () => {
   const t = await getTranslations("work");
-  const projects = getAllWork();
+  const locale = await getLocale();
+  const projects = getAllWork(locale);
 
   return (
     <>
@@ -23,13 +24,13 @@ const WorkPage = async () => {
               <li key={project.slug}>
                 <FadeIn>
                   <Link href={`/work/${project.slug}`} className="group block">
-                    <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden bg-neutral-100 mb-6">
+                    <div className="relative w-full aspect-16/9 rounded-2xl overflow-hidden bg-neutral-100 mb-6">
                       {project.coverImage ? (
                         <Image
                           src={project.coverImage}
                           alt={project.title}
                           fill
-                          className="object-cover transition duration-500 motion-safe:group-hover:scale-105"
+                          className="object-fill transition duration-500 motion-safe:group-hover:scale-105"
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center text-neutral-400">

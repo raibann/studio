@@ -32,7 +32,7 @@
     },
     "applicationDevelopment": {
       "title": "Application development",
-      "description": "We have a team of skilled developers who are experts in the latest app frameworks, like Angular 1 and Google Web Toolkit."
+      "description": "We have a team of skilled developers who are experts in the latest app frameworks, like Nextjs, Nuxtj and others."
     },
     "ecommerce": {
       "title": "E-commerce",
@@ -40,7 +40,7 @@
     },
     "cms": {
       "title": "Custom content management",
-      "description": "At Studio we understand the importance of having a robust and customised CMS. That's why we run all of our client projects out of a single, enormous Joomla instance."
+      "description": "At Midvortex we understand the importance of having a robust and customised CMS. That's why we run all of our client projects out of a single, enormous custom CMS instance base on client business needs."
     }
   },
   "contactSection": {
@@ -52,8 +52,8 @@
     "eyebrow": "About us",
     "title": "Our strength is collaboration",
     "description1": "We believe that our strength lies in our collaborative approach, which puts our clients at the center of everything we do.",
-    "description2": "Studio was started by three friends who noticed that developer studios were charging clients double what an in-house team would cost. Since the beginning, we have been committed to doing things differently by charging triple instead.",
-    "description3": "At Studio, we're more than just colleagues — we're a family. This means we pay very little and expect people to work late. We want our employees to bring their whole selves to work. In return, we just ask that they keep themselves there until at least 6:30pm.",
+    "description2": "Midvortex was started by four friends who noticed that developer Midvortex was charging clients double what an in-house team would cost. Since the beginning, we have been committed to doing things differently by charging triple instead.",
+    "description3": "At Midvortex, we're more than just colleagues — we're a family. This means we pay very little and expect people to work late. We want our employees to bring their whole selves to work. In return, we just ask that they keep themselves there until at least 6:30pm.",
     "stats": {
       "underpaidEmployees": "Underpaid employees",
       "placatedClients": "Placated clients",
@@ -95,9 +95,9 @@
     "description1": "Based off of the discovery phase, we develop a comprehensive roadmap for each product and start working towards delivery. The roadmap is an intricately tangled mess of technical nonsense designed to drag the project out as long as possible.",
     "description2": "Each client is assigned a key account manager to keep lines of communication open and obscure the actual progress of the project. They act as a buffer between the client's incessant nagging and the development team who are hard at work scouring open source projects for code to re-purpose.",
     "description3": "Our account managers are trained to only reply to client emails after 9pm, several days after the initial email. This reinforces the general aura that we are very busy and dissuades clients from asking for changes.",
-    "quote": "Studio_clone were so regular with their progress updates we almost began to think they were automated!",
-    "quoteAuthor": "Debra Fiscal",
-    "quoteRole": "CEO of Unseal"
+    "quote": "Midvortex were so regular with their progress updates we almost began to think they were automated!",
+    "quoteAuthor": "Ray Vanarith",
+    "quoteRole": "HR of Tenglay SHV"
   },
   "deliver": {
     "title": "Deliver",
@@ -153,7 +153,7 @@
     "description": "We are a group of like-minded people who share the same core values.",
     "loyalty": {
       "title": "Loyalty",
-      "description": "Our team has been with us since the beginning because none of them are allowed to have LinkedIn profiles."
+      "description": "Our team has been with us since the beginning because none of them are allowed to have Telegram and Github profiles."
     },
     "trust": {
       "title": "Trust",

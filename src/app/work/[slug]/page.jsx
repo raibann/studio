@@ -4,15 +4,17 @@ import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import MdxRemote from "@/components/MdxRemote";
 import Image from "next/image";
+import { getLocale } from "next-intl/server";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const slugs = getAllWorkSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const work = getWorkBySlug(slug);
+  const locale = await getLocale();
+  const work = getWorkBySlug(slug, locale);
 
   if (!work) {
     return {
@@ -33,7 +35,8 @@ export async function generateMetadata({ params }) {
 
 export default async function WorkProjectPage({ params }) {
   const { slug } = await params;
-  const work = getWorkBySlug(slug);
+  const locale = await getLocale();
+  const work = getWorkBySlug(slug, locale);
 
   if (!work) {
     notFound();
